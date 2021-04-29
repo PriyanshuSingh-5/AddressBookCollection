@@ -81,13 +81,13 @@ namespace AddressBook2
             var lastName = Console.ReadLine();
             adressBookList.RemoveAll(item => item.FirstName == firstName && item.LastName == lastName);
         }
-    
 
-    
+
+
         public bool Check(string fname)  //Check whether same person exist
         {
             int flag = 0;
-            foreach (Person person in adressBookList) 
+            foreach (Person person in adressBookList)
             {
                 if (person.FirstName.Equals(fname)) //check first name and user input are equal or not
                 {
@@ -102,5 +102,4 @@ namespace AddressBook2
             return false;
         }
     }
-    }
-
+}
