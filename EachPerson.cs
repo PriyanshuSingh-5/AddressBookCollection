@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AddressBook2
 {
-    class EachPerson
+    public class EachPerson
     {
-        public interface Person
+        public interface IPerson //To call all the methods
         {
             void addPerson();  
             void displayPerson();
