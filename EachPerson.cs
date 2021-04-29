@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AddressBook2
 {
     
-        public interface EachPerson //To call all the methods
+        public interface EachPerson //To call all the method
         {
               
             void displayPerson();

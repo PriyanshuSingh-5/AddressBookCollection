@@ -16,7 +16,7 @@ namespace AddressBook2
             Person person = new Person(firstName, lastName, city, state, email, phoneNumber);
             adressBookList.Add(person);
         }
-        public void displayPerson()
+        public void displayPerson()  //display details
         {
             Console.WriteLine("\nEntered Person Details is:");
             foreach (var person in adressBookList)
@@ -24,7 +24,7 @@ namespace AddressBook2
                 Console.WriteLine("FirstName: {0}, LastName: {1}, city: {2}, state: {3}, email: {4}, phoneNumber: {5}", person.FirstName, person.LastName, person.city, person.state, person.email, person.phoneNumber);
             }
         }
-        public void editPerson()
+        public void editPerson()  //edit details
         {
             Console.WriteLine("\n enter First name to edit details:");
             string name = Console.ReadLine();
@@ -101,5 +101,57 @@ namespace AddressBook2
             }
             return false;
         }
+        public void SearchCityOrState()  //SearchRecordCityOrState Record Method
+        {
+
+            Console.WriteLine("1.City\n2.State\nEnter Choice:-");
+
+            int choice2 = Convert.ToInt32(Console.ReadLine());
+            if (choice2 == 1)
+            {
+                int count = 0;
+                Console.WriteLine("Searching contact by City");
+                Console.WriteLine("Enter City Name:-");
+                string city = Console.ReadLine();
+
+                for (int i = 0; i < adressBookList.Count; i++)   //Cheack record present or not
+                {
+                    if (adressBookList[i].city.Equals(city))  //Cheack list of record and user inpute same or not
+                    {
+                        count++;
+
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{city} City Name of Record Not Found "); //Print Record not found
+                    }
+                }
+            }
+
+
+            else
+            {
+                int count = 0;
+                Console.WriteLine("Search Record by State");
+                Console.WriteLine("Enter State Name:-");
+                string state = Console.ReadLine();
+
+                for (int i = 0; i < adressBookList.Count; i++)
+                {
+                    if (adressBookList[i].state.Equals(state))
+                    {
+                        count++;
+                       
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{state} State Name of Record Not Found ");
+                    }
+                }
+
+                Console.WriteLine($"\nNumber of contact in the City:- state are count");
+            }
+        }
     }
 }
+

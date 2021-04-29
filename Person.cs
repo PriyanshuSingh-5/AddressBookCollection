@@ -25,7 +25,7 @@ namespace AddressBook2
 			this.email = email;
 			this.phoneNumber = phoneNumber;
 		}
-		public String getFirstName() /// get method returns the value of the variable FirstName.
+		public String getFirstName() //get method returns the value of the variable FirstName.
 		{
 			return FirstName;
 		}
