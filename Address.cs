@@ -123,7 +123,7 @@ namespace AddressBook2
                     }
                     else
                     {
-                        Console.WriteLine($"(city) City Name of Record Not Found "); //Print Record not found
+                        Console.WriteLine("(city) City Name of Record Not Found "); //Print Record not found
                     }
                 }
             }
@@ -140,16 +140,18 @@ namespace AddressBook2
                 {
                     if (adressBookList[i].state.Equals(state))
                     {
+                       
                         count++;
-                        Console.WriteLine($"Name: ( adressBookList[i].FirstName) State: ( adressBookList[i].state) ");
+                        Console.WriteLine("Name: ( adressBookList[i].FirstName) State: ( adressBookList[i].state) ");
+                        Console.WriteLine("Number: ( adressBookList[i].phoneNumber) State: ( adressBookList[i].state) ");
                     }
                     else
                     {
-                        Console.WriteLine($"(state) State Name of Record Not Found ");
+                        Console.WriteLine("(state) State Name of Record Not Found ");
                     }
                 }
 
-                Console.WriteLine($"\nNumber of contact in the City: state are count");
+                Console.WriteLine("\nNumber of contact in the City: state are count");
             }
         }
     }
