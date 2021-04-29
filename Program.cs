@@ -13,7 +13,7 @@ namespace AddressBook2
            
                 Console.WriteLine("Welcome in Address book System");
 
-                ///create dictionary and 
+                ///create dictionary to store the details
                 ///Dict is name of dictionary
                 Dictionary<string, Address> Dict = new Dictionary<string, Address>();//string is Tkey and AddressBook is TValue.
                 bool ProgramIsRunning = true;

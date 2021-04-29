@@ -9,7 +9,7 @@ namespace AddressBook2
     
         class Address : EachPerson
         {
-            List<Person> adressBookList = new List<Person>();
+            List<Person> adressBookList = new List<Person>();//to add details in addressbook
 
             public void AddContact(string firstName, string lastName, string address, string city, string state, string phoneNumber, string email)
             {

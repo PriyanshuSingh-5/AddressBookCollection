@@ -35,22 +35,22 @@ namespace AddressBook2
 			this.FirstName = firstName;
 		}
 
-		public String getLastName() //get method returns the value of the variable LastName.
+		public String getLastName() 
 		{
 			return LastName;
 		}
 
-		public void setLastName(String lastName) //set method assigns a value to the name variable.
+		public void setLastName(String lastName) 
 		{
 			this.LastName = lastName;
 		}
 
-		public String getCity()//get method returns the value of the variable city.
+		public String getCity()
 		{
 			return city;
 		}
 
-		public void setCity(String city)//get method returns the value of the variable city.
+		public void setCity(String city)
 		{
 			this.city = city;
 		}

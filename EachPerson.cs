@@ -8,9 +8,9 @@ namespace AddressBook2
 {
     class EachPerson
     {
-        public interface IPerson
+        public interface Person
         {
-            // void addPerson();
+            void addPerson();  
             void displayPerson();
             void editPerson();
             void deletePerson();
