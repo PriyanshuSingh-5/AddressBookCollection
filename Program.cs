@@ -36,7 +36,7 @@ namespace AddressBook2
             }
 
             Console.WriteLine("**** Welcome To Address Book System ****");
-            Console.WriteLine("\n1.Add Address Book System\n2.Show Address Books System Names\n3.Search Person in City or State\n4.Exit "); //Print menu
+            Console.WriteLine("\n1.Add Address book  name\n2.Show existing first  Names\n3.Search Person in City or State\n4.Exit "); //Print menu
 
             Console.Write("Enter Your Choice:- ");
             int option = Convert.ToInt32(Console.ReadLine());
@@ -54,19 +54,20 @@ namespace AddressBook2
 
                     Console.Write("Enter Address Book System Name:- ");
                     addressBookName = Console.ReadLine();
-                    bool isKeyAvailable = false;
-                    foreach (KeyValuePair<string, Program> keyValue in Dict)
-                    {
-                        if (keyValue.Key.Equals(addressBookName)) //Check Addressbook name exixt or not
-                        {
-                            isKeyAvailable = true; //value is present
-                        }
-                    }
-                    if (isKeyAvailable) //value is present print message
-                    {
-                        Console.WriteLine($"Address Book System {addressBookName} is Already Exist\n Please Enter New Address Book Name:-");
-                        addressBookName = Console.ReadLine();//Take input user
+                    bool person = false;
 
+                    foreach (var person in adressBookList)
+                    {
+                        if (person.Equals(addressBookName)) //value is present print message
+                        {
+                            Console.WriteLine("first name  is Already Exist\n Please Enter New Name:");
+                            addressBookName = Console.ReadLine();
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("first name is valid");
+                        }
                     }
 
                     while (ProgramIsRunning)
@@ -84,7 +85,7 @@ namespace AddressBook2
                                     int numberOfContacts = Convert.ToInt32(Console.ReadLine());
                                     for (int i = 1; i <= numberOfContacts; i++)
                                     {
-                                        AddContact(Dict[contactName]);
+                                        AddPerson(Dict[contactName]);
                                     }
                                     Dict[contactName].displayPerson();
                                 }
@@ -135,15 +136,16 @@ namespace AddressBook2
                         }
                     }
 
-                    Dict.Add(addressBookName, Address);
-                    break;
+                    
                 case 2:
-                    Console.WriteLine(" Available Address Books System ");
-                    foreach (KeyValuePair<String, Program> keyValue in Dict)
-                        Console.WriteLine("Address Book System Name:-  " + keyValue.Key);
+                    Console.WriteLine("Details of existing name");
+                    foreach (var person in Dict)
+                    {
+                        Console.WriteLine("existing name details" +person.Equals(firstName));
+                    }
                     break;
                 case 3:
-                    add.SearchRecordCityOrState();
+                    add.SearchCityOrState();
                     break;
 
                 default:
