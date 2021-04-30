@@ -138,6 +138,11 @@ namespace AddressBook2
 
                 for (int i = 0; i < adressBookList.Count; i++)
                 {
+                    var result = adressBookList.FindAll(x => x.FirstName.Equals(state));
+                    foreach (Person person in result)
+                    {
+                        Console.WriteLine("Name\t" + person.FirstName  );
+                    }
                     if (adressBookList[i].state.Equals(state))
                     {
                        

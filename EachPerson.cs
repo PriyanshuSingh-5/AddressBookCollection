@@ -13,6 +13,8 @@ namespace AddressBook2
             void displayPerson();
             void editPerson();
             void deletePerson();
+            bool Check(string fname);
+            void SearchCityOrState();
         }
     }
 

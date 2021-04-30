@@ -12,10 +12,10 @@ namespace AddressBook2
         {
 
             Console.WriteLine("Welcome in Address book System");
-
+            Address add = new Address();
 
             //create dictionary to store the details
-            
+
             Dictionary<string, Address> Dict = new Dictionary<string, Address>();//string is Tkey and AddressBook is TValue.
             bool ProgramIsRunning = true;
 
@@ -34,93 +34,150 @@ namespace AddressBook2
             {
                 Console.WriteLine("{0}", item.Key);
             }
-            while (ProgramIsRunning)
+
+            Console.WriteLine("**** Welcome To Address Book System ****");
+            Console.WriteLine("\n1.Add Address Book System\n2.Show Address Books System Names\n3.Search Person in City or State\n4.Exit "); //Print menu
+
+            Console.Write("Enter Your Choice:- ");
+            int option = Convert.ToInt32(Console.ReadLine());
+            while (option > 4)
             {
-                Console.WriteLine("\nChoose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Exit");
-                int choice = Convert.ToInt32(Console.ReadLine()); ///store and convert into int using choice variable
-                switch (choice)
-                {
-                    case 1:
-                        Console.WriteLine("\nEnter Existing Address Book Name for adding contacts");
-                        string contactName = Console.ReadLine();
-                        if (Dict.ContainsKey(contactName))
-                        {
-                            Console.WriteLine("\nEnter the number of contacts you want to add in address book");
-                            int numberOfContacts = Convert.ToInt32(Console.ReadLine());
-                            for (int i = 1; i <= numberOfContacts; i++)
-                            {
-                                addContactBook(Dict[contactName]);
-                            }
-                            Dict[contactName].displayPerson();
-                        }
-                        else
-                        {
-                            Console.WriteLine("No AddressBook exist with name {0}", contactName);
-                        }
-                        break;
-                    case 2:
-                        Console.WriteLine("Enter Address Book Name for edit contact");
-                        string editcontactName = Console.ReadLine();
-                        if (Dict.ContainsKey(editcontactName))
-                        {
-                            Dict[editcontactName].editPerson();
-                            Dict[editcontactName].displayPerson();
-                        }
-                        else
-                        {
-                            Console.WriteLine("No Address book exist with name {0} ", editcontactName);
-                        }
-                        break;
-                    case 3:
-                        Console.WriteLine("\nEnter Address Book Name for delete contact");
-                        string deleteContact = Console.ReadLine();
-                        if (Dict.ContainsKey(deleteContact))
-                        {
-                            Dict[deleteContact].deletePerson();
-                            Dict[deleteContact].displayPerson();
-                        }
-                        else
-                        {
-                            Console.WriteLine("No Address book exist with name {0} ", deleteContact);
-                        }
-                        break;
-                    case 4:
-                        Console.WriteLine("\nEnter Address Book Name for display contacts");
-                        string displayContactsInAddressBook = Console.ReadLine();
-                        Dict[displayContactsInAddressBook].displayPerson();
-                        break;
-                    case 5:
-                        ProgramIsRunning = false;
-                        break;
-                    default:
-                        Console.WriteLine("Please enter valid option");
-                        break;
-                }
+                Console.WriteLine("Plz Enter Valid Option");
+                Console.Write("Enter Your Choice:-");
+                option = Convert.ToInt32(Console.ReadLine());
             }
-
-
-
-            void addContactBook(Address addressBook)
+            Program addressBook = new Program(); //Create Object AddressBookMain
+            string addressBookName = null; // addressBookName empty or null
+            switch (option)  //switch Case
             {
-                Console.WriteLine("Enter First Name : ");
-                string firstName = Console.ReadLine();
-                Console.WriteLine("Enter Last Name : ");
-                string lastName = Console.ReadLine();
-                Console.WriteLine("Enter Address : ");
-                string address = Console.ReadLine();
-                Console.WriteLine("Enter City : ");
-                string city = Console.ReadLine();
-                Console.WriteLine("Enter State : ");
-                string state = Console.ReadLine();
-                Console.WriteLine("Enter Phone Number : ");
-                string phoneNumber = Console.ReadLine();
-                Console.WriteLine("Enter Email id :");
-                string email = Console.ReadLine();
-                addressBook.AddContact(firstName, lastName, address, city, state, phoneNumber, email);
+                case 1:
+
+                    Console.Write("Enter Address Book System Name:- ");
+                    addressBookName = Console.ReadLine();
+                    bool isKeyAvailable = false;
+                    foreach (KeyValuePair<string, Program> keyValue in Dict)
+                    {
+                        if (keyValue.Key.Equals(addressBookName)) //Check Addressbook name exixt or not
+                        {
+                            isKeyAvailable = true; //value is present
+                        }
+                    }
+                    if (isKeyAvailable) //value is present print message
+                    {
+                        Console.WriteLine($"Address Book System {addressBookName} is Already Exist\n Please Enter New Address Book Name:-");
+                        addressBookName = Console.ReadLine();//Take input user
+
+                    }
+
+                    while (ProgramIsRunning)
+                    {
+                        Console.WriteLine("\nChoose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Exit");
+                        int choice = Convert.ToInt32(Console.ReadLine()); ///store and convert into int using choice variable
+                        switch (choice)
+                        {
+                            case 1:
+                                Console.WriteLine("\nEnter Existing Address Book Name for adding contacts");
+                                string contactName = Console.ReadLine();
+                                if (Dict.ContainsKey(contactName))
+                                {
+                                    Console.WriteLine("\nEnter the number of contacts you want to add in address book");
+                                    int numberOfContacts = Convert.ToInt32(Console.ReadLine());
+                                    for (int i = 1; i <= numberOfContacts; i++)
+                                    {
+                                        AddContact(Dict[contactName]);
+                                    }
+                                    Dict[contactName].displayPerson();
+                                }
+                                else
+                                {
+                                    Console.WriteLine("No AddressBook exist with name {0}", contactName);
+                                }
+                                break;
+                            case 2:
+                                Console.WriteLine("Enter Address Book Name for edit contact");
+                                string editcontactName = Console.ReadLine();
+                                if (Dict.ContainsKey(editcontactName))
+                                {
+                                    Dict[editcontactName].editPerson();
+                                    Dict[editcontactName].displayPerson();
+                                }
+                                else
+                                {
+                                    Console.WriteLine("No Address book exist with name {0} ", editcontactName);
+                                }
+                                break;
+                            case 3:
+                                Console.WriteLine("\nEnter Address Book Name for delete contact");
+                                string deleteContact = Console.ReadLine();
+                                if (Dict.ContainsKey(deleteContact))
+                                {
+                                    Dict[deleteContact].deletePerson();
+                                    Dict[deleteContact].displayPerson();
+                                }
+                                else
+                                {
+                                    Console.WriteLine("No Address book exist with name {0} ", deleteContact);
+                                }
+                                break;
+                            case 4:
+                                Console.WriteLine("\nEnter Address Book Name for display contacts");
+                                string displayContactsInAddressBook = Console.ReadLine();
+                                Dict[displayContactsInAddressBook].displayPerson();
+                                break;
+
+
+                            case 5:
+                                ProgramIsRunning = false;
+                                break;
+                            default:
+                                Console.WriteLine("Please enter valid option");
+                                break;
+                        }
+                    }
+
+                    Dict.Add(addressBookName, Address);
+                    break;
+                case 2:
+                    Console.WriteLine(" Available Address Books System ");
+                    foreach (KeyValuePair<String, Program> keyValue in Dict)
+                        Console.WriteLine("Address Book System Name:-  " + keyValue.Key);
+                    break;
+                case 3:
+                    add.SearchRecordCityOrState();
+                    break;
+
+                default:
+                    break;
+
             }
 
         }
+
+
+
+
+
+        void addContactBook(Address addressBook)
+        {
+            Console.WriteLine("Enter First Name : ");
+            string firstName = Console.ReadLine();
+            Console.WriteLine("Enter Last Name : ");
+            string lastName = Console.ReadLine();
+            Console.WriteLine("Enter Address : ");
+            string address = Console.ReadLine();
+            Console.WriteLine("Enter City : ");
+            string city = Console.ReadLine();
+            Console.WriteLine("Enter State : ");
+            string state = Console.ReadLine();
+            Console.WriteLine("Enter Phone Number : ");
+            string phoneNumber = Console.ReadLine();
+            Console.WriteLine("Enter Email id :");
+            string email = Console.ReadLine();
+            addressBook.AddContact(firstName, lastName, address, city, state, phoneNumber, email);
+        }
+
     }
 }
+
 
 
