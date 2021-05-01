@@ -104,34 +104,85 @@ namespace AddressBook2
         public void SearchCityOrState()  //SearchRecordCityOrState Record Method
         {
 
-            
-            Console.WriteLine(" Enter Your Choice: ");
-            Console.WriteLine("1. State 2. City");
-            string option = Console.ReadLine();
-            int select = Convert.ToInt32(option);
-            switch (select)
+
+            //public void SearchPersonInStateOrCity()
+            //{
+            //    Console.WriteLine("Please Enter Your Choice Which You Want To search...");
+            //    Console.WriteLine("1. State 2. City");
+            //    string option = Console.ReadLine();
+            //    int select = Convert.ToInt32(option);
+            //    switch (select)
+            //    {
+            //        case 1:
+            //            Console.WriteLine("Please Enter Your First Name : ");
+            //            String nameToSearchInState = Console.ReadLine();
+            //            foreach (Contacts addressBook in list.FindAll(e => e.FirstName == nameToSearchInState))
+            //            {
+            //                Console.WriteLine("State of " + nameToSearchInState + " is : " + addressBook.State + "\n");
+            //            }
+            //            break;
+            //        case 2:
+            //            Console.WriteLine("Please Enter Your First Name : ");
+            //            string searchFirstNameInStateOrCity = Console.ReadLine();
+            //            foreach (Contacts addressBook in list.FindAll(e => e.FirstName == searchFirstNameInStateOrCity))
+            //            {
+            //                Console.WriteLine("City of " + searchFirstNameInStateOrCity + " is : " + addressBook.City + "\n");
+            //            }
+            //            break;
+            //    }
+
+            int choose = Convert.ToInt32(Console.ReadLine());
+            if (choose == 1)
             {
-                case 1:
-                    Console.WriteLine("Please Enter Your First Name : ");
-                    String nameToSearchInState = Console.ReadLine();
-                    foreach (Person addressBook in adressBookList.FindAll(e => e.FirstName == nameToSearchInState))
+                int count = 0;
+
+                Console.WriteLine("Searching contact by City");
+                Console.WriteLine("Enter City Name:-");
+                string city = Console.ReadLine();
+
+                for (int i = 0; i < adressBookList.Count; i++)
+                {
+                    if (adressBookList[i].city.Equals(city))
                     {
-                        Console.WriteLine("State of " + nameToSearchInState + " is : " + addressBook.state + "\n");
-                       
+                        count++;
+
+                        Console.WriteLine("Name:- { adressBookList[i].FirstName} City: { adressBookList[i].city} ");
                     }
-                    break;
-                case 2:
-                    Console.WriteLine("Please Enter Your First Name : ");
-                    string searchFirstNameInStateOrCity = Console.ReadLine();
-                    foreach (Person addressBook in adressBookList.FindAll(e => e.FirstName == searchFirstNameInStateOrCity))
+                    else
                     {
-                        Console.WriteLine("City of " + searchFirstNameInStateOrCity + " is : " + addressBook.city + "\n");
+                        Console.WriteLine("{city} City Name of Record Not Found ");
                     }
-                    break;
+
+                }
+            }
+
+           
+
+            else
+            {
+                int count = 0;
+                Console.WriteLine("Search Record by State");
+                Console.WriteLine("Enter State Name:-");
+                string state = Console.ReadLine();
+
+                for (int i = 0; i < adressBookList.Count; i++)   
+                {
+                    if (adressBookList[i].state.Equals(state))
+                    {
+                        count++;
+                        Console.WriteLine("Name: { adressBookList[i].FirstName} State: { adressBookList[i].state} ");
+                        Console.WriteLine("PhoneNumber: { adressBookList[i].PhoneNumber} State: { adressBookList[i].state} ");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("{state} State Name of Record Not Found ");
+                    }
+                }
+
+                Console.WriteLine("\nNumber of contact in the City:- {state} are {count}");
             }
         }
     }
 }
 
-
-           
